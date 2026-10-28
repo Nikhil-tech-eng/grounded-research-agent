@@ -1,0 +1,21 @@
+{
+  "user_question": "Compare Qdrant, Weaviate, and Milvus for a small RAG startup.",
+  "short_answer": "Use a workload-specific benchmark before choosing: deployment effort, filtering needs, scale, and team operating capacity are the decision criteria.",
+  "key_findings": [{
+    "claim": "A representative evaluation should compare the products using the startup's own retrieval workload rather than treating a single product as universally best.",
+    "evidence": "The retrieved product documentation provides primary material for a feature and operational comparison; this sample intentionally avoids unsupported feature claims.",
+    "source_urls": ["https://qdrant.tech/documentation/", "https://docs.weaviate.io/weaviate", "https://milvus.io/docs"]
+  }],
+  "sources_used": [
+    {"title": "Qdrant documentation", "url": "https://qdrant.tech/documentation/", "snippet": "Official Qdrant documentation used as a primary product source in this representative output.", "publisher": "qdrant.tech", "published_at": null, "relevance_score": 0.9, "quality_score": 0.8, "tool": "web_search"},
+    {"title": "Weaviate documentation", "url": "https://docs.weaviate.io/weaviate", "snippet": "Official Weaviate documentation used as a primary product source in this representative output.", "publisher": "docs.weaviate.io", "published_at": null, "relevance_score": 0.9, "quality_score": 0.8, "tool": "web_search"},
+    {"title": "Milvus documentation", "url": "https://milvus.io/docs", "snippet": "Official Milvus documentation used as a primary product source in this representative output.", "publisher": "milvus.io", "published_at": null, "relevance_score": 0.9, "quality_score": 0.8, "tool": "web_search"}
+  ],
+  "confidence_level": "medium",
+  "limitations_or_assumptions": ["This is a representative static schema sample, not a captured live result.", "A live comparison should add independent benchmark evidence and verify current product capabilities."],
+  "suggested_next_steps": ["Benchmark representative vectors, metadata filters, concurrency, and recovery behaviour.", "Compare managed-service cost with the operational cost of self-hosting."],
+  "trace_id": "demo1234abcd",
+  "plan": {"question": "Compare Qdrant, Weaviate, and Milvus for a small RAG startup.", "assumptions": ["The startup values a pragmatic balance of retrieval quality and operational effort."], "steps": [{"id": 1, "objective": "Find official product documentation", "tool": "web_search", "query": "Qdrant Weaviate Milvus official documentation", "rationale": "Primary documentation is the starting point for feature claims."}, {"id": 2, "objective": "Find independent performance evidence", "tool": "web_search", "query": "Qdrant Weaviate Milvus benchmark filtering performance", "rationale": "Independent evidence helps validate vendor claims."}]},
+  "failures": [],
+  "metrics": {"latency_ms": 1840, "sources_gathered": 4, "source_count": 3, "sources_filtered_out": 1, "tool_failure_count": 0, "plan_step_count": 2}
+}

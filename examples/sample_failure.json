@@ -1,0 +1,13 @@
+{
+  "user_question": "Research a niche topic while retrieval is unavailable.",
+  "short_answer": "I could not gather reliable evidence, so I cannot provide a grounded answer.",
+  "key_findings": [],
+  "sources_used": [],
+  "confidence_level": "low",
+  "limitations_or_assumptions": ["All retrieval attempts failed or returned no usable sources."],
+  "suggested_next_steps": ["Check network/API configuration and retry.", "Provide trusted URLs."],
+  "trace_id": "demo5678efgh",
+  "plan": {"question": "Research a niche topic while retrieval is unavailable.", "assumptions": ["The request requires current external information."], "steps": [{"id": 1, "objective": "Find current sources", "tool": "web_search", "query": "niche topic", "rationale": "Search is required for current evidence."}, {"id": 2, "objective": "Find background information", "tool": "wikipedia_search", "query": "niche topic", "rationale": "Use keyless fallback for stable context."}]},
+  "failures": [{"step_id": 1, "tool": "web_search", "error_type": "TimeoutException", "message": "search timed out after bounded retries", "retryable": true}],
+  "metrics": {"latency_ms": 12450, "sources_gathered": 0, "source_count": 0, "sources_filtered_out": 0, "tool_failure_count": 1, "plan_step_count": 2}
+}

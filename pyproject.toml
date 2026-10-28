@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "grounded-research-agent"
+version = "0.1.0"
+description = "A production-minded, source-grounded AI research agent"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "beautifulsoup4>=4.12,<5",
+  "httpx>=0.27,<1",
+  "openai>=1.58,<3",
+  "pydantic>=2.9,<3",
+  "python-dotenv>=1.0,<2",
+  "streamlit>=1.40,<2",
+  "tenacity>=9,<10",
+  "typer>=0.15,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.3,<9", "pytest-cov>=6,<8", "ruff>=0.8,<1"]
+
+[project.scripts]
+research-agent = "research_agent.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/research_agent"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+

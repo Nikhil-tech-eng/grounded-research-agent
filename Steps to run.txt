@@ -1,0 +1,78 @@
+ATLAS RESEARCH AGENT — RUN GUIDE
+================================
+
+1. Create and activate a virtual environment (first time only)
+--------------------------------------------------------------
+cd "C:\Users\nikhi\OneDrive\Desktop\JavaRoadmap\Projects\Predixion AI\research-agent"
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+
+T1: Frontend
+streamlit run streamlit_app.py
+http://localhost:8501
+
+
+-----------------------or-------------------------------
+
+ATLAS RESEARCH AGENT — RUN GUIDE
+================================
+1. Open PowerShell in the project folder
+----------------------------------------
+cd "C:\Users\nikhi\OneDrive\Desktop\JavaRoadmap\Projects\Predixion AI\research-agent"
+2. Create and activate a virtual environment (first time only)
+--------------------------------------------------------------
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+If PowerShell blocks activation, run this once for the current window and try again:
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+3. Install project dependencies
+-------------------------------
+python -m pip install --upgrade pip
+python -m pip install -e ".[dev]"
+4. Configure API keys for live research
+---------------------------------------
+Copy-Item .env.example .env
+notepad .env
+Set this required value in .env:
+OPENAI_API_KEY=your_openai_api_key
+Optional but recommended for better current-web discovery:
+TAVILY_API_KEY=your_tavily_api_key
+Other optional settings already present in .env.example:
+OPENAI_MODEL=gpt-4.1-mini
+REQUEST_TIMEOUT_SECONDS=12
+MAX_SOURCES=8
+LOG_LEVEL=INFO
+5. Start the Streamlit dashboard (recommended for the demo)
+-----------------------------------------------------------
+streamlit run streamlit_app.py
+Open the local address shown in PowerShell, normally:
+http://localhost:8501
+Dashboard options:
+- View demo result: works without API keys and shows a clearly labelled representative output.
+- Run live research: uses the configured OpenAI API key and current research sources.
+The dashboard visibly demonstrates the assignment requirements:
+- Agent planning and orchestration
+- Three tools: web search, Wikipedia search, and safe URL fetching
+- Evidence filtering, ranking, deduplication, and citations
+- Structured answer, confidence, limitations, and suggested next steps
+- Failures, safety controls, and metrics
+6. Run from the command line instead (optional)
+------------------------------------------------
+research-agent "Compare Qdrant, Weaviate, and Milvus for a small RAG startup."
+Save the complete JSON output to a file:
+research-agent "Compare Qdrant, Weaviate, and Milvus for a small RAG startup." -o output.json
+7. Run checks before submission
+-------------------------------
+python -m pytest -q
+python -m ruff check .
+Expected result: all tests pass and Ruff reports "All checks passed!".
+8. Stop the dashboard
+---------------------
+In the PowerShell window running Streamlit, press Ctrl + C.
+Notes
+-----
+- The .env file contains secrets and must not be committed to Git.
+- Without TAVILY_API_KEY, web search falls back to Wikipedia where possible.
+- For the submission video, show one live or demo success path and one failure/safety case.
